@@ -1,3 +1,5 @@
+if cache.game == 'redm' then return {} end
+
 return {
 	-- 0	vehicle has no storage
 	-- 1	vehicle has no trunk storage

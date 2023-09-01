@@ -237,9 +237,13 @@ function client.openInventory(inv, data)
 		if left then
 			if not cache.vehicle then
 				if inv == 'player' then
-					Utils.PlayAnim(0, 'mp_common', 'givetake1_a', 8.0, 1.0, 2000, 50, 0.0, 0, 0, 0)
+					local animDict = cache.game == 'fivem' and 'mp_common' or 'script_camp@cash_box'
+					local anim = cache.game == 'fivem' and 'givetake1_a' or 'open_satchel'
+					Utils.PlayAnim(0, animDict, anim, 8.0, 1.0, 2000, 50, 0.0, 0, 0, 0)
 				elseif inv ~= 'trunk' then
-					Utils.PlayAnim(0, 'pickup_object', 'putdown_low', 5.0, 1.5, 1000, 48, 0.0, 0, 0, 0)
+					local animDict = cache.game == 'fivem' and 'pickup_object' or 'script_camp@cash_box'
+					local anim = cache.game == 'fivem' and 'putdown_low' or 'open_satchel'
+					Utils.PlayAnim(0, animDict, anim, 5.0, 1.5, 1000, 48, 0.0, 0, 0, 0)
 				end
 			end
 
@@ -250,7 +254,7 @@ function client.openInventory(inv, data)
 			SetNuiFocusKeepInput(true)
 			closeTrunk()
 
-			if client.screenblur then TriggerScreenblurFadeIn(0) end
+			if client.screenblur and cache.game == 'fivem' then TriggerScreenblurFadeIn(0) end
 
 			currentInventory = right or defaultInventory
 			left.items = PlayerData.inventory
@@ -315,7 +319,7 @@ RegisterNetEvent('ox_inventory:forceOpenInventory', function(left, right)
 	SetNuiFocusKeepInput(true)
 	closeTrunk()
 
-	if client.screenblur then TriggerScreenblurFadeIn(0) end
+	if client.screenblur and cache.game == 'fivem' then TriggerScreenblurFadeIn(0) end
 
 	currentInventory = right or defaultInventory
 	currentInventory.ignoreSecurityChecks = true
@@ -831,7 +835,7 @@ function client.closeInventory(server)
 		invOpen = nil
 		SetNuiFocus(false, false)
 		SetNuiFocusKeepInput(false)
-		TriggerScreenblurFadeOut(0)
+		if cache.game == 'fivem' then TriggerScreenblurFadeOut(0) end
 		closeTrunk()
 		SendNUIMessage({ action = 'closeInventory' })
 		SetInterval(client.interval, 200)
@@ -966,7 +970,11 @@ end)
 local function nearbyDrop(point)
 	if not point.instance or point.instance == currentInstance then
 		---@diagnostic disable-next-line: param-type-mismatch
-		DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 150, 30, 30, 222, false, false, 0, true, false, false, false)
+		if cache.game == 'fivem' then
+			DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 150, 30, 30, 222, false, false, 0, true, false, false, false)
+		else
+			Citizen.InvokeNative(0x2A32FAA57B937173, 0x07DCE236, point.coords.x, point.coords.y, point.coords.z-0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.15, 255, 0, 0, 155, false, false, false, 1, false, false, false)
+		end
 	end
 end
 
@@ -1233,17 +1241,19 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 		end
 	end
 
-	for id, data in pairs(data('licenses')) do
-		lib.points.new({
-			coords = data.coords,
-			distance = 16,
-			inv = 'license',
-			type = data.name,
-			price = data.price,
-			invId = id,
-			nearby = nearbyLicense,
-			message = ('**%s**  \n%s'):format(locale('purchase_license', data.name), locale('interact_prompt', GetControlInstructionalButton(0, 38, true):sub(3)))
-		})
+	if cache.game == 'fivem' then
+		for id, data in pairs(data('licenses')) do
+			lib.points.new({
+				coords = data.coords,
+				distance = 16,
+				inv = 'license',
+				type = data.name,
+				price = data.price,
+				invId = id,
+				nearby = nearbyLicense,
+				message = ('**%s**  \n%s'):format(locale('purchase_license', data.name), locale('interact_prompt', GetControlInstructionalButton(0, 38, true):sub(3)))
+			})
+		end
 	end
 
 	while not uiLoaded do Wait(50) end
@@ -1316,7 +1326,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 
 		if EnableWeaponWheel then return end
 
-		local weaponHash = GetSelectedPedWeapon(playerPed)
+		local weaponHash = cache.game == 'fivem' and GetSelectedPedWeapon(playerPed) or Citizen.InvokeNative(0xD240123E, playerPed)
 
 		if currentWeapon then
 			if weaponHash ~= currentWeapon.hash and currentWeapon.timer then
@@ -1356,7 +1366,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 	local IsControlJustReleased = IsControlJustReleased
 
 	client.tick = SetInterval(function()
-		DisablePlayerVehicleRewards(playerId)
+		if cache.game == 'fivem' then DisablePlayerVehicleRewards(playerId) end
 
 		if invOpen then
 			DisableAllControlActions(0)
@@ -1380,7 +1390,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 				DisablePlayerFiring(playerId, true)
 			end
 
-			if not EnableWeaponWheel then
+			if not EnableWeaponWheel and cache.game == 'fivem' then
 				HudWeaponWheelIgnoreSelection()
 				DisableControlAction(0, 37, true)
 			end
@@ -1505,7 +1515,7 @@ RegisterNetEvent('ox_inventory:viewInventory', function(data)
 		})
 		SetNuiFocus(true, true)
 
-		if client.screenblur then TriggerScreenblurFadeIn(0) end
+		if client.screenblur and cache.game == 'fivem' then TriggerScreenblurFadeIn(0) end
 	end
 end)
 

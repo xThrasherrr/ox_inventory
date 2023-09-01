@@ -119,15 +119,23 @@ end
 exports('weaponWheel', Utils.WeaponWheel)
 
 function Utils.CreateBlip(settings, coords)
-	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-	SetBlipSprite(blip, settings.id)
-	SetBlipDisplay(blip, 4)
-	SetBlipScale(blip, settings.scale)
-	SetBlipColour(blip, settings.colour)
-	SetBlipAsShortRange(blip, true)
-	BeginTextCommandSetBlipName(settings.name)
-	EndTextCommandSetBlipName(blip)
-
+	local blip
+	if cache.game == 'fivem' then
+		blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+		SetBlipSprite(blip, settings.id)
+		SetBlipScale(blip, settings.scale)
+		SetBlipDisplay(blip, 4)
+		SetBlipColour(blip, settings.colour)
+		SetBlipAsShortRange(blip, true)
+		BeginTextCommandSetBlipName(settings.name)
+		EndTextCommandSetBlipName(blip)
+	else
+		blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, coords)
+		SetBlipSprite(blip, settings.id, 52)
+		SetBlipScale(blip, settings.scale)
+		Citizen.InvokeNative(0x9CB1A1623062F402, blip, settings.name)
+	end
+	print(blip, settings.id, settings.scale, settings.name, coords)
 	return blip
 end
 

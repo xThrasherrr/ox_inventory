@@ -215,4 +215,345 @@ return {
 		label = 'Scrap Metal',
 		weight = 80,
 	},
+
+	["poodle"] = {
+		label = "Poodle",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Poodle",
+		client = {
+			image = "animal_dog_poodle.png",
+		}
+	},
+
+	["ammo_pistol"] = {
+		label = "Pistol (N)",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Pistol Ammo",
+		client = {
+			image = "ammo_bullet_normal.png",
+		}
+	},
+
+	["boatticket"] = {
+		label = "Boat Ticket",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "used for boat travel",
+		client = {
+			image = "boatticket.png",
+		}
+	},
+
+	["ammo_shotgun"] = {
+		label = "Shotgun (N)",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Shotgun Ammo",
+		client = {
+			image = "ammo_shotgun.png",
+		}
+	},
+
+	["collie"] = {
+		label = "Collie",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Collie",
+		client = {
+			image = "animal_dog_collie.png",
+		}
+	},
+
+	["ammo_arrow"] = {
+		label = "Arrow (N)",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Arrow",
+		client = {
+			image = "ammo_arrow.png",
+		}
+	},
+
+	["horsebrush"] = {
+		label = "Horse Brush",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "brush used to clean your horse",
+		client = {
+			image = "horsebrush.png",
+		}
+	},
+
+	["ammo_rifle"] = {
+		label = "Rifle (N)",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Rifle Ammo",
+		client = {
+			image = "ammo_bullet_normal.png",
+		}
+	},
+
+	["indiancigar"] = {
+		label = "Indian Cigar",
+		weight = 50,
+		stack = true,
+		close = true,
+		description = "indian cigar",
+		client = {
+			image = "indiancigar.png",
+		}
+	},
+
+	["indtobacco"] = {
+		label = "Indian Tobacco",
+		weight = 10,
+		stack = true,
+		close = true,
+		description = "indian tobacco",
+		client = {
+			image = "indtobacco.png",
+		}
+	},
+
+	["firstaid"] = {
+		label = "Firstaid",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "used for firstaid",
+		client = {
+			image = "firstaid.png",
+		}
+	},
+
+	["sheperd"] = {
+		label = "Shepherd",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Australian Sheperd",
+		client = {
+			image = "animal_dog_australianshepherd.png",
+		}
+	},
+
+	["lab"] = {
+		label = "Lab",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Lab",
+		client = {
+			image = "animal_dog_lab.png",
+		}
+	},
+
+	["goldpanner"] = {
+		label = "Gold Panner",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Gold Panner",
+		client = {
+			image = "goldpanner.png",
+		}
+	},
+
+	["bayretriever"] = {
+		label = "Retriever",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Ches Bay Retriever",
+		client = {
+			image = "animal_dog_chesbayretriever.png",
+		}
+	},
+
+	["foxhound"] = {
+		label = "Fox Hound",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "American Foxhound",
+		client = {
+			image = "animal_dog_americanfoxhound.png",
+		}
+	},
+
+	["husky"] = {
+		label = "Husky",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Husky",
+		client = {
+			image = "animal_dog_husky.png",
+		}
+	},
+
+	["ammo_revolver"] = {
+		label = "Revolver (N)",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Revolver Ammo",
+		client = {
+			image = "ammo_bullet_normal.png",
+		}
+	},
+
+	["fertilizer"] = {
+		label = "Fertilizer",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "feed for growing plants",
+		client = {
+			image = "fertilizer.png",
+		}
+	},
+
+	["sugar"] = {
+		label = "Sugar",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "product from farming",
+		client = {
+			image = "sugar.png",
+		}
+	},
+
+	["coonhound"] = {
+		label = "Coon Hound",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Bluetick Coonhound",
+		client = {
+			image = "animal_dog_bluetickcoonhound.png",
+		}
+	},
+
+	["street"] = {
+		label = "Street",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Street",
+		client = {
+			image = "animal_dog_street.png",
+		}
+	},
+
+	["painkillers"] = {
+		label = "Painkillers",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "used for painkillers",
+		client = {
+			image = "painkillers.png",
+		}
+	},
+
+	["carrot"] = {
+		label = "Carrot",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "product from farming",
+		client = {
+			image = "carrot.png",
+		}
+	},
+
+	["gold_ore"] = {
+		label = "Gold Ore",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Gold ore",
+		client = {
+			image = "gold_ore.png",
+		}
+	},
+
+	["bread"] = {
+		label = "Bread Roll",
+		weight = 125,
+		stack = true,
+		close = true,
+		description = "Bread Roll",
+		client = {
+			image = "bread.png",
+		}
+	},
+
+	["catahoulacur"] = {
+		label = "Catahoula Cur",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Catahoula Cur",
+		client = {
+			image = "animal_dog_catahoularcur.png",
+		}
+	},
+
+	["indtobaccoseed"] = {
+		label = "Indian Seed",
+		weight = 0,
+		stack = true,
+		close = true,
+		description = "indian tobacco seed",
+		client = {
+			image = "indtobaccoseed.png",
+		}
+	},
+
+	["ammo_repeater"] = {
+		label = "Repeater (N)",
+		weight = 200,
+		stack = true,
+		close = true,
+		description = "Repeater Ammo",
+		client = {
+			image = "ammo_bullet_normal.png",
+		}
+	},
+
+	["ifaks"] = {
+		label = "Ifaks",
+		weight = 100,
+		stack = true,
+		close = true,
+		description = "product  for Ifaks",
+		client = {
+			image = "ifaks.png",
+		}
+	},
+
+	["hound"] = {
+		label = "Hound",
+		weight = 500,
+		stack = false,
+		close = true,
+		description = "Hound",
+		client = {
+			image = "animal_dog_hound.png",
+		}
+	},
 }

@@ -1,12 +1,13 @@
 fx_version 'cerulean'
 use_experimental_fxv2_oal 'yes'
 lua54 'yes'
-game 'gta5'
+games { 'gta5', 'rdr3' }
 name 'ox_inventory'
 author 'Overextended'
 version '2.33.1'
 repository 'https://github.com/overextended/ox_inventory'
 description 'Slot-based inventory with item metadata support'
+rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 
 dependencies {
     '/server:6116',
